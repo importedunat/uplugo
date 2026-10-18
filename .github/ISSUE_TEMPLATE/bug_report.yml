@@ -1,0 +1,58 @@
+name: Problema / Bug
+description: Algo não funcionou como esperado. / Something didn't work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dica: no app, **Preferências → Relatar um problema** abre este formulário já com versão, sistema e diagnóstico preenchidos.
+        Tip: in the app, **Preferences → Report a problem** opens this form with version, system and diagnostics filled in.
+  - type: textarea
+    id: problem
+    attributes:
+      label: O que aconteceu? / What happened?
+      description: O que você esperava e o que aconteceu. / What you expected and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Como reproduzir / Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Modo em uso / Mode in use
+      options:
+        - Minhas configurações / My settings
+        - Configurações do jogo / Game settings
+        - Só carregar / Charge only
+        - Instalação ou abertura / Installing or opening
+        - Outro / Other
+  - type: input
+    id: controller
+    attributes:
+      label: Controle / Controller
+      placeholder: DualSense, DualSense Edge…
+  - type: input
+    id: version
+    attributes:
+      label: Versão do app / App version
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Sistema / System
+      description: Distribuição, desktop e kernel. / Distribution, desktop and kernel.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnóstico / Diagnostics
+      description: Não tem nomes, números de série nem caminhos pessoais. Revise antes de enviar. / Contains no names, serial numbers or personal paths. Review before submitting.
+      render: json

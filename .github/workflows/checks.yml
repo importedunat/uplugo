@@ -1,0 +1,56 @@
+name: Checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  linux:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the committed source inventory
+        run: python3 tests/git_inventory.py
+      - name: Install distribution dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-gi gir1.2-gtk-3.0 librsvg2-common libusb-1.0-0 libayatana-appindicator3-1 pkexec udev dbus-x11 xvfb xauth fonts-dejavu-core desktop-file-utils ca-certificates
+      - run: python3 build_helper.py
+      - run: python3 -m compileall -q .
+      - name: Test userspace without hardware
+        run: python3 tests/run_userspace.py --report userspace-results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: userspace-${{ matrix.os }}
+          path: userspace-results.json
+  containers:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - distribution: debian-13
+            recipe: Dockerfile.debian13
+          - distribution: fedora-44
+            recipe: Dockerfile.fedora44
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the distribution test environment
+        run: docker build -f packaging/testing/${{ matrix.recipe }} -t dualsense-distribution-test packaging/testing
+      - name: Test as a regular user with no network or hardware access
+        run: |
+          touch userspace-results.json
+          chmod 666 userspace-results.json
+          docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
+            --tmpfs /tmp:rw,mode=1777 --tmpfs /run:rw,mode=1777 \
+            --mount type=bind,src="$PWD",dst=/src,readonly \
+            --mount type=bind,src="$PWD/userspace-results.json",dst=/run/results.json \
+            dualsense-distribution-test python3 tests/run_userspace.py --report /run/results.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: userspace-${{ matrix.distribution }}
+          path: userspace-results.json

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <action id="org.local.dualsense.usb.native.control">
+    <description>Use controllers with Uplugo</description>
+    <description xml:lang="pt_BR">Usar controles com o Uplugo</description>
+    <description xml:lang="es">Usar mandos con Uplugo</description>
+    <message>Configure controller access for your account in Uplugo</message>
+    <message xml:lang="pt_BR">Configure o acesso aos controles para sua conta no Uplugo</message>
+    <message xml:lang="es">Configura el acceso a los mandos para tu cuenta en Uplugo</message>
+    <defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>no</allow_active></defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/dualsense-usb-helper</annotate>
+  </action>
+  <action id="org.local.dualsense.usb.native.manage">
+    <description>Manage controller access for your account</description>
+    <description xml:lang="pt_BR">Gerenciar o acesso aos controles para sua conta</description>
+    <description xml:lang="es">Gestionar el acceso a los mandos para tu cuenta</description>
+    <message>Allow Uplugo to grant or revoke controller access for your account</message>
+    <message xml:lang="pt_BR">Permitir ao Uplugo conceder ou revogar o acesso aos controles para sua conta</message>
+    <message xml:lang="es">Permitir que Uplugo conceda o revoque el acceso a los mandos para tu cuenta</message>
+    <defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>auth_admin</allow_active></defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/dualsense-usb-access</annotate>
+  </action>
+</policyconfig>

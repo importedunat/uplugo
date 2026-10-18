@@ -1,0 +1,284 @@
+[
+  {
+    "id": "white",
+    "name": "Branco",
+    "group": "Cores",
+    "color": "#e7e9ee"
+  },
+  {
+    "id": "black",
+    "name": "Midnight Black",
+    "group": "Cores",
+    "color": "#35373c"
+  },
+  {
+    "id": "cosmic-red",
+    "name": "Cosmic Red",
+    "group": "Cores",
+    "color": "#952844"
+  },
+  {
+    "id": "starlight-blue",
+    "name": "Starlight Blue",
+    "group": "Cores",
+    "color": "#509cc3"
+  },
+  {
+    "id": "nova-pink",
+    "name": "Nova Pink",
+    "group": "Cores",
+    "color": "#dd4684"
+  },
+  {
+    "id": "galactic-purple",
+    "name": "Galactic Purple",
+    "group": "Cores",
+    "color": "#6453a0"
+  },
+  {
+    "id": "grey-camouflage",
+    "name": "Grey Camouflage",
+    "group": "Cores",
+    "color": "#737670"
+  },
+  {
+    "id": "cobalt-blue",
+    "name": "Cobalt Blue",
+    "group": "Cores",
+    "color": "#2b50b3"
+  },
+  {
+    "id": "volcanic-red",
+    "name": "Volcanic Red",
+    "group": "Cores",
+    "color": "#b53b39"
+  },
+  {
+    "id": "sterling-silver",
+    "name": "Sterling Silver",
+    "group": "Cores",
+    "color": "#b9b9bc"
+  },
+  {
+    "id": "chroma-pearl",
+    "name": "Chroma Pearl",
+    "group": "Cores",
+    "color": "#dfd0d8"
+  },
+  {
+    "id": "chroma-indigo",
+    "name": "Chroma Indigo",
+    "group": "Cores",
+    "color": "#5264a0"
+  },
+  {
+    "id": "chroma-teal",
+    "name": "Chroma Teal",
+    "group": "Cores",
+    "color": "#4c8e83"
+  },
+  {
+    "id": "techno-red",
+    "name": "Techno Red",
+    "group": "Cores",
+    "color": "#f24631"
+  },
+  {
+    "id": "remix-green",
+    "name": "Remix Green",
+    "group": "Cores",
+    "color": "#9aca21"
+  },
+  {
+    "id": "rhythm-blue",
+    "name": "Rhythm Blue",
+    "group": "Cores",
+    "color": "#2e67dd"
+  },
+  {
+    "id": "helldivers-2",
+    "name": "Helldivers 2",
+    "group": "Edições especiais",
+    "color": "#353839"
+  },
+  {
+    "id": "spider-man-2",
+    "name": "Marvel’s Spider-Man 2",
+    "group": "Edições especiais",
+    "color": "#30353e"
+  },
+  {
+    "id": "final-fantasy-xvi",
+    "name": "Final Fantasy XVI",
+    "group": "Edições especiais",
+    "color": "#30353e"
+  },
+  {
+    "id": "monster-hunter-wilds",
+    "name": "Monster Hunter Wilds",
+    "group": "Edições especiais",
+    "color": "#9d263a"
+  },
+  {
+    "id": "fortnite",
+    "name": "Fortnite",
+    "group": "Edições especiais",
+    "color": "#50acde"
+  },
+  {
+    "id": "astro-bot",
+    "name": "ASTRO BOT",
+    "group": "Edições especiais",
+    "color": "#e5eaf2"
+  },
+  {
+    "id": "the-last-of-us",
+    "name": "The Last of Us",
+    "group": "Edições especiais",
+    "color": "#31353d"
+  },
+  {
+    "id": "god-of-war-ragnarok",
+    "name": "God of War Ragnarök",
+    "group": "Edições especiais",
+    "color": "#e0e5ed"
+  },
+  {
+    "id": "icon-blue",
+    "name": "Icon Blue",
+    "group": "Edições especiais",
+    "color": "#2d4a85"
+  },
+  {
+    "id": "lisa",
+    "name": "LISA",
+    "group": "Edições especiais",
+    "color": "#e3d2e3"
+  },
+  {
+    "id": "gta-vi-black",
+    "name": "Grand Theft Auto VI · Preto",
+    "group": "Edições especiais",
+    "color": "#59326a"
+  },
+  {
+    "id": "gta-vi-white",
+    "name": "Grand Theft Auto VI · Branco",
+    "group": "Edições especiais",
+    "color": "#d9cce6"
+  },
+  {
+    "id": "wolverine-adamantium",
+    "name": "Wolverine · Adamantium",
+    "group": "Edições especiais",
+    "color": "#a5a8ad"
+  },
+  {
+    "id": "wolverine-yellow",
+    "name": "Wolverine · Amarelo",
+    "group": "Edições especiais",
+    "color": "#d6ad2a"
+  },
+  {
+    "id": "007-first-light",
+    "name": "007 First Light",
+    "group": "Edições especiais",
+    "color": "#b19345"
+  },
+  {
+    "id": "marathon",
+    "name": "Marathon",
+    "group": "Edições especiais",
+    "color": "#e5e6e0"
+  },
+  {
+    "id": "genshin-impact",
+    "name": "Genshin Impact",
+    "group": "Edições especiais",
+    "color": "#e6dbb8"
+  },
+  {
+    "id": "god-of-war-20",
+    "name": "God of War · 20 anos",
+    "group": "Edições especiais",
+    "color": "#b5b0aa"
+  },
+  {
+    "id": "astro-bot-joyful",
+    "name": "ASTRO BOT · Joyful",
+    "group": "Edições especiais",
+    "color": "#e9edf3"
+  },
+  {
+    "id": "ghost-yotei-gold",
+    "name": "Ghost of Yōtei · Dourado",
+    "group": "Edições especiais",
+    "color": "#b89949"
+  },
+  {
+    "id": "death-stranding-2",
+    "name": "Death Stranding 2",
+    "group": "Edições especiais",
+    "color": "#d76b20"
+  },
+  {
+    "id": "anniversary-30",
+    "name": "30º aniversário",
+    "group": "Edições especiais",
+    "color": "#b7b7b6"
+  },
+  {
+    "id": "edge-white",
+    "name": "Edge · Branco",
+    "group": "DualSense Edge",
+    "color": "#e7e9ee"
+  },
+  {
+    "id": "edge-black",
+    "name": "Edge · Midnight Black",
+    "group": "DualSense Edge",
+    "color": "#35373c"
+  },
+  {
+    "id": "edge-anniversary-30",
+    "name": "Edge · 30º aniversário",
+    "group": "DualSense Edge",
+    "color": "#b7b7b6"
+  },
+  {
+    "id": "hogwarts-legacy",
+    "name": "Hogwarts Legacy",
+    "group": "Edições especiais",
+    "color": "#343842"
+  },
+  {
+    "id": "lebron-james",
+    "name": "LeBron James",
+    "group": "Edições especiais",
+    "color": "#343842"
+  },
+  {
+    "id": "concord",
+    "name": "Concord",
+    "group": "Edições especiais",
+    "color": "#343842"
+  },
+  {
+    "id": "ghost-yotei-black",
+    "name": "Ghost of Yōtei · Preto",
+    "group": "Edições especiais",
+    "color": "#343842"
+  },
+  {
+    "id": "gran-turismo",
+    "name": "Gran Turismo",
+    "group": "Edições especiais",
+    "color": "#343842"
+  },
+  {
+    "id": "custom",
+    "name": "Outro / personalizado",
+    "group": "Personalizado",
+    "color": "#bfcbdc"
+  }
+]

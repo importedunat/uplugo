@@ -1,0 +1,251 @@
+{
+  "credit": "Sony Interactive Entertainment and respective rights holders. Image rights are not covered by the code license.",
+  "terms": "https://www.playstation.com/en-us/legal/website-terms-of-use/",
+  "verified": "2026-10-18",
+  "photos": [
+    {
+      "id": "white",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-White01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/"
+    },
+    {
+      "id": "black",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-MidnightBlack01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/"
+    },
+    {
+      "id": "cosmic-red",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-CosmicRed01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "82e4b61b2bad7b10c60ad57e5dadeca353199343ba9f526f0570e1971be61406"
+      ]
+    },
+    {
+      "id": "starlight-blue",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-StarlightBlue01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "ab9af061e04b009ef2ecefc4569dc9a25a7eb5b405d58f0d2f2893eaeef35ac2"
+      ]
+    },
+    {
+      "id": "nova-pink",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-NovaPink01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "12dffee8bd2a4058dc6b9649768ef3bf97100cdd902c2566c1f025ea3687cc91"
+      ]
+    },
+    {
+      "id": "galactic-purple",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-GalaticPurple01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "ab5f156f34fe0c5e1b400872dcf842c4e8e51d08265b07d51077cb7f516d8bd9"
+      ]
+    },
+    {
+      "id": "grey-camouflage",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/dualsense-gray-camo-screenshot-01-en-13sep22?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "cobalt-blue",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-CobaltBlue01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "d9f55e34d9b02130694795a9b8aa3d21b619f06aabf5b2343a966101bab3fdf4"
+      ]
+    },
+    {
+      "id": "volcanic-red",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-VolcanicRed01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "75de3841a9300af7e196511dd79f862469d9ace2d3eebafc9a6cb3a6416da18e"
+      ]
+    },
+    {
+      "id": "sterling-silver",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-SterlingSilver01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "91b22e0ab66d4b7b6cdc9f62a7b46bd99ebe935f2eee8ab7a66d5760610bd73f"
+      ]
+    },
+    {
+      "id": "chroma-pearl",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-ChromaPearl01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "ee152feacdd0e669f5d2c7e127d05a3db6c6de475a869923f1f6aa4431bd0097"
+      ]
+    },
+    {
+      "id": "chroma-indigo",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-ChromaIndigo01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "b382ddd328dfeb4b3d08cb45584826430a3e79b70fbce08dd4a0dbaa13397e66"
+      ]
+    },
+    {
+      "id": "chroma-teal",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DualsenseController-ChromaTeal01-16x9-01-28feb26$en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/nova-pink/",
+      "replaces_sha256": [
+        "8d07c721aa862cd1c570510da029559057246dfb6319a2623f828bbf0504967f"
+      ]
+    },
+    {
+      "id": "techno-red",
+      "url": "https://media.direct.playstation.com/is/image/sierialto/DualSense-Gravity-Red-Hero-1-front-facing?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-techno-red-for-ps5-pc-mac-mobile",
+      "replaces_sha256": [
+        "ce8c9f033a5c1bedea6b09529423470b7a86e8ffa82c100a5cfb8c6a259ae84e"
+      ]
+    },
+    {
+      "id": "remix-green",
+      "url": "https://media.direct.playstation.com/is/image/sierialto/DualSense-Gravity-Green-Hero-1-front-facing?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-remix-green-for-ps5-pc-mac-mobile",
+      "replaces_sha256": [
+        "052959461d413a59620f910169f6de00e465ccdfe71315e8acebcdb1f92d44f3"
+      ]
+    },
+    {
+      "id": "rhythm-blue",
+      "url": "https://media.direct.playstation.com/is/image/sierialto/DualSense-Gravity-Blue-Hero-1-front-facing?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-rhythm-blue-for-ps5-pc-mac-mobile",
+      "replaces_sha256": [
+        "4c3ac222948f03e2acf3bcda7f9ff2afe2e255bcbdfc3aa06e6c436857690344"
+      ]
+    },
+    {
+      "id": "helldivers-2",
+      "url": "https://media.direct.playstation.com/is/image/sierialto/Helldivers-ds-hero-1?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://direct.playstation.com/en-us/buy-accessories/dualsense-wireless-controller-helldivers-2-limited-edition"
+    },
+    {
+      "id": "spider-man-2",
+      "url": "https://www.sony.jp/imag/product/CFI-ZCT1JZ2?$ImageExL$",
+      "source": "https://www.sony.jp/imag/product/CFI-ZCT1JZ2"
+    },
+    {
+      "id": "final-fantasy-xvi",
+      "url": "https://www.sony.jp/imag/product/CFIJ-15500?$ImageExL$",
+      "source": "https://www.sony.jp/imag/product/CFIJ-15500"
+    },
+    {
+      "id": "monster-hunter-wilds",
+      "url": "https://www.sony.jp/imag/product/CFI-ZCT1JZ5?$ImageExL$",
+      "source": "https://pur.store.sony.jp/ps5/products/ps5_controller/CFI-ZCT1JZ5_product/"
+    },
+    {
+      "id": "fortnite",
+      "url": "https://www.sony.jp/imag/product/CFI-ZCT1JZ4?$ImageExL$",
+      "source": "https://pur.store.sony.jp/ps5/products/ps5_controller/CFI-ZCT1JZ4_product/"
+    },
+    {
+      "id": "astro-bot",
+      "url": "https://www.sony.jp/imag/product/CFI-ZCT1JZ3?$ImageExL$",
+      "source": "https://pur.store.sony.jp/ps5/products/ps5_controller/CFI-ZCT1JZ3_product/"
+    },
+    {
+      "id": "the-last-of-us",
+      "url": "https://blog.playstation.com/tachyon/2025/03/20b818b1f170e9deab3c21bf4bf00ca0abd6022b-scaled.jpeg",
+      "source": "https://blog.playstation.com/2025/03/06/first-look-at-the-dualsense-wireless-controller-the-last-of-us-limited-edition/"
+    },
+    {
+      "id": "god-of-war-ragnarok",
+      "url": "https://media.direct.playstation.com/is/image/sierialto/GOWR-DualSense-Controller-Main?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://direct.playstation.com/en-gb/buy-accessories/dualsense-wireless-controller-god-of-war-ragnarok-limited-edition"
+    },
+    {
+      "id": "icon-blue",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DUALSENSE_LE_ICON_BLUE_PR_01_RGB-16x9-01-17aug26en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/en-gb/accessories/dualsense-wireless-controller/buy-now/product/icon-blue-special-edition/"
+    },
+    {
+      "id": "lisa",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DUALSENSE-LE-LISA-PR-01-5x4-01-08aug26-_en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "gta-vi-black",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/GTAVI-Black-DualSense-LE-image-block-01-en-26aug26?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "gta-vi-white",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/GTAVI-White-DualSense-LE-image-block-01-en-26aug26?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "wolverine-adamantium",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DUALSENSE-LE-MWOLVERINE-PR-4x3-01-06jul26-en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "wolverine-yellow",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/DUALSENSE-LE-MWOLVERINE-PR-01-YELL-4x3-01-06jul26-en?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "007-first-light",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/007-First-Light-LE-DualSense-image-block-01-en-02apr26?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "marathon",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/Marathon-LE-DualSense-image-block-02-en-12jan26?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "genshin-impact",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/Genshin-Impact-LE-DualSense-image-block-02-en-20nov25?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "god-of-war-20",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/god-of-war-20th-dualsense-image-block-01-en-07may25?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "astro-bot-joyful",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/AstroBot-LE-DualSense-image-block-02-en-02set25?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "ghost-yotei-gold",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/ghost-of-yotei-controllers-dualsense-gold-image-02-en-08sep25?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "death-stranding-2",
+      "url": "https://gmedia.playstation.com/is/image/SIEPDC/Death-Stranding2-LE-DualSense-image-block-02-en-09may25?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://www.playstation.com/pt-br/accessories/dualsense-wireless-controller/"
+    },
+    {
+      "id": "anniversary-30",
+      "url": "https://www.sony.jp/imag/product/CFI-ZCT1J30?$ImageExL$",
+      "source": "https://pur.store.sony.jp/ps5/products/ps5_controller/CFI-ZCT1J30_product/"
+    },
+    {
+      "id": "edge-white",
+      "url": "https://media.direct.playstation.com/is/image/sierialto/dualsense-edge-ps5-controller-front?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://direct.playstation.com/en-us/buy-accessories/dualsense-edge-wireless-controller"
+    },
+    {
+      "id": "edge-black",
+      "url": "https://media.direct.playstation.com/is/image/sierialto/DSEdge-black-Hero-1?fmt=png-alpha&wid=900&hei=600&fit=fit,1",
+      "source": "https://direct.playstation.com/en-us/buy-accessories/dualsense-edge-wireless-controller-midnight-black"
+    },
+    {
+      "id": "edge-anniversary-30",
+      "url": "https://www.sony.jp/imag/product/CFI-ZCP1J30?$ImageExL$",
+      "source": "https://pur.store.sony.jp/ps5/products/ps5_controller/CFI-ZCP1J30_product/"
+    }
+  ]
+}

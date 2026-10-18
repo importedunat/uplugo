@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <action id="org.local.dualsense.usb.touchpad">
+    <description>Configure a DualSense touchpad as a Linux pointer</description>
+    <description xml:lang="pt_BR">Configurar o touchpad do DualSense como ponteiro do Linux</description>
+    <description xml:lang="es">Configurar el panel táctil del DualSense como puntero de Linux</description>
+    <message>Allow Uplugo to change pointer behavior for this controller on this computer</message>
+    <message xml:lang="pt_BR">Permitir ao Uplugo mudar o comportamento do ponteiro deste controle neste computador</message>
+    <message xml:lang="es">Permitir que Uplugo cambie el comportamiento del puntero de este mando en este equipo</message>
+    <defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>auth_admin</allow_active></defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/dualsense-usb-touchpad</annotate>
+  </action>
+</policyconfig>

@@ -1,0 +1,93 @@
+/* Normal dark palette. Removed when GTK uses a high-contrast theme. */
+.dualsense button.destructive-action { background: #a32743; border-color: #d05c73; color: #ffffff; }
+.dualsense scrollbar { background: #181e28; }
+.dualsense scrollbar slider { background: #7f8ba0; }
+window.dualsense, dialog.dualsense, .dualsense dialog { background: #0e1117; color: #f5f6f8; }
+.dualsense .brand { color: #f5f7fa; }
+.dualsense .muted { color: #acb3c0; }
+.dualsense .eyebrow { color: #a4b0c4; }
+.dualsense .card { background-image: linear-gradient(155deg, #242a34, #191e27); border-color: #39404c; }
+.dualsense .card.cyan { border-color: #537cc1; }
+.dualsense .card.error { border-color: #cb7681; }
+.dualsense .status-pill { background: #303744; color: #e1e5ee; }
+.dualsense .status-pill.cyan, .dualsense .status-pill.purple { background: #203c67; color: #c4ddff; }
+.dualsense .status-pill.amber { background: #483c29; color: #ffdc9a; }
+.dualsense .status-pill.error { background: #502c34; color: #ffd0d6; }
+.dualsense .status-pill.muted { background: #303642; color: #b1b8c5; }
+.dualsense button { background: #202630; color: #f1f4fa; border-color: #3b4554; box-shadow: none; text-shadow: none; }
+.dualsense button:hover { background: #424d5d; border-color: #d7e0ef; }
+.dualsense button:active { background: #526078; }
+.dualsense button:focus { outline-color: #87baff; }
+.dualsense button:disabled { background: #242a34; color: #858d9a; border-color: #39404b; }
+.dualsense button.primary { background: #0866df; color: #ffffff; border-color: #3489f6; }
+.dualsense button.primary:hover { background: #247ef0; border-color: #a9cfff; }
+.dualsense button.primary:disabled { background: #263e61; border-color: #314b70; color: #94a3b7; }
+.dualsense button.quiet { background: transparent; border-color: transparent; color: #bdc8dc; }
+.dualsense button.quiet:hover { background: #333c4a; color: #ffffff; }
+.dualsense button.model-link { color: #c5cfdf; }
+.dualsense progressbar trough { background: #424956; }
+.dualsense progressbar progress { background: #77aaff; }
+.dualsense progressbar.charging progress { background: #f4ba61; }
+.dualsense .muted progressbar progress { background: #848e9f; }
+.dualsense separator { background: #3a424f; }
+.dualsense .footer { border-top-color: #343c49; color: #a4adbc; }
+.dualsense .notice { background: #172335; color: #e4edfa; }
+.dualsense .setup { background: #162338; border-color: #3c5577; }
+.dualsense popover, popover.dualsense { background: #222934; color: #f5f7fa; border-color: #626e80; }
+.dualsense .mode-option { border-color: #526074; }
+.dualsense .mode-option:checked { background: #243e64; border-color: #87baff; }
+.dualsense .warning { color: #ffdb9b; }
+.dualsense entry, .dualsense textview text { background: #151b25; color: #f4f6fa; caret-color: #a9cdff; border-color: #657185; }
+.dualsense checkbutton, .dualsense radiobutton { color: #e2e8f2; }
+.dualsense check, .dualsense radio { background: #2e3949; border-color: #8999af; color: #ffffff; }
+.dualsense check:checked, .dualsense radio:checked { background: #0866df; border-color: #8cbaff; }
+.dualsense box.empty { color: #c0c9d8; }
+.dualsense .guide-choice { border-bottom-color: #343c49; }
+.dualsense .guide-mode { color: #98c2ff; }
+.dualsense flowboxchild { background: none; }
+.dualsense spinner { color: #ffd08a; }
+.dualsense .art-frame { background: transparent; }
+.dualsense button.model-tile { background: #262e3c; border-color: #455166; }
+.dualsense button.model-tile:hover { border-color: #b7d4ff; background: #33435b; }
+.dualsense button.model-tile:checked { border-color: #78aeff; background: #234777; }
+.dualsense .model-tile label { color: #f5f7fb; }
+.dualsense .model-tile .muted { color: #b4c6e0; }
+.dualsense .gallery-count { color: #bbc8da; }
+.dualsense headerbar button.titlebutton { background: transparent; box-shadow: none; }
+.dualsense .controller-row { border-bottom-color: #2b323d; }
+.dualsense .product-stage { background: transparent; }
+.dualsense .mode-status { color: #b7c4d6; }
+.dualsense .mode-status.amber { color: #edc887; }
+.dualsense .mode-status.cyan, .dualsense .mode-status.purple { color: #96bcf4; }
+.dualsense .mode-status.error { color: #ff9fb4; }
+.dualsense .mode-switch { background: #181e28; }
+.dualsense button.mode-tab { border-color: transparent; background: transparent; color: #b8c2d0; }
+.dualsense button.mode-tab:hover { background: #283140; color: #ffffff; }
+.dualsense button.mode-tab.selected { background: #2a3b55; border-color: #5377a9; color: #ffffff; }
+.dualsense button.mode-tab:disabled { color: #758196; }
+.dualsense .effects-section { border-bottom-color: #2b323d; }
+.dualsense .effect-hex { color: #a4b6d0; }
+.dualsense button.swatch { border-color: transparent; color: #0e1117; }
+.dualsense button.swatch.chosen { border-color: white; box-shadow: 0 0 0 2px #5688d3; }
+.dualsense .dialog-note { color: #9fb0c8; }
+.dualsense .input-key { background: #202630; border-color: #3b4554; color: #d0d9e8; }
+.dualsense .input-key.pressed { background: #0866df; border-color: #a8ceff; color: #ffffff; }
+.dualsense .direction-mark { border-color: #3b4554; color: #9fb0c8; }
+.dualsense .direction-mark.observed { border-color: #739fda; color: #d4e6ff; background: #19334e; }
+.dualsense .input-tabs { background: #181e28; }
+.dualsense .input-tabs button { border-color: transparent; background: transparent; }
+.dualsense .input-tabs button:checked { background: #254364; border-color: #7ea8e3; color: #ffffff; }
+.dualsense button.device-selector { background: #171d27; border-color: #2b3442; color: #b4bfce; }
+.dualsense button.device-selector:hover { background: #222e40; border-color: #6488ba; }
+.dualsense button.device-selector:checked { background: #233754; border-color: #7eaeef; color: #ffffff; }
+.dualsense .controller-hero { background-image: linear-gradient(120deg, #172131, #10151d); }
+.dualsense button.tool-action { background: transparent; border-color: transparent; color: #d3dce9; }
+.dualsense button.tool-action:hover { background: #233044; border-color: #405779; }
+.dualsense button.tool-action:disabled { background: transparent; color: #8691a3; }
+.dualsense .controller-workspace button.mode-tab.selected { background: #244d84; border-color: #79b2ff; }
+.dualsense .device-selector .error { color: #ff9fb4; }
+.dualsense .effect-tabs button:checked, .dualsense .effect-choice:checked { background: #244d84; border-color: #79b2ff; color: #ffffff; }
+.dualsense .tour-focus { outline-color: #a3caff; box-shadow: inset 0 0 0 2px #75a9ff; }
+
+.dualsense .game-step { background: #171f2b; border-color: #35455f; }
+.dualsense .game-choice:checked { background: #233754; color: #ffffff; }

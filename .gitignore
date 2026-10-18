@@ -1,0 +1,26 @@
+# Personal preferences, hardware identifiers, charging history and diagnostics.
+/controllers.json
+/battery-readings.json
+/charge-history.json
+/diagnostico-carga.txt
+*.log
+*.tmp
+.env
+.env.*
+__pycache__/
+*.py[cod]
+.venv/
+/work/
+/dist/
+/userspace-results.json
+# Generated privileged installer and old machine-specific desktop shortcut.
+/install-access.py
+/remove-access.py
+/installation.json
+/*.desktop
+/.preview/
+# Personal or copyrighted artwork belongs in XDG_DATA_HOME, not the repository.
+/appearance-library/
+/assets/official/
+# Personal test logs and machine results stay local.
+/notes/

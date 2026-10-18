@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+# SPDX-License-Identifier: GPL-3.0-only
+@ACCESS_SOURCE@
+if __name__ == '__main__':
+    try:
+        removed=AccessFiles().remove(@LEGACY_HELPER_HASH@, access_actor())
+        print('Acesso USB removido.' if removed else 'O acesso USB já estava removido.')
+    except Exception as exc:
+        raise SystemExit(str(exc))

@@ -1,0 +1,75 @@
+/* Structure and relative typography; desktop high contrast keeps these rules. */
+.dualsense .brand { font-size: 1.071em; font-weight: 600; letter-spacing: 1.8px; }
+.dualsense .page-title { font-size: 2.429em; font-weight: 300; letter-spacing: -0.5px; }
+.dualsense .eyebrow { font-size: 0.714em; font-weight: 500; letter-spacing: 1.5px; }
+.dualsense .card { border: 1px solid; border-radius: 16px; padding: 18px; }
+.dualsense .controller-name { font-size: 1.643em; font-weight: 500; }
+.dualsense .battery-value { font-size: 1.571em; font-weight: 500; letter-spacing: -0.5px; }
+.dualsense .status-pill { font-size: 0.857em; font-weight: 500; padding: 5px 10px; border-radius: 6px; }
+.dualsense button { border: 1px solid; border-radius: 10px; padding: 9px 14px; }
+.dualsense button:focus { outline: 2px solid; outline-offset: 3px; }
+.dualsense button.primary { border: 1px solid; font-weight: 600; }
+.dualsense button.quiet { padding: 6px 9px; }
+.dualsense button.model-link { font-size: 0.857em; padding: 4px 9px; }
+.dualsense progressbar trough { border: 0; border-radius: 5px; min-height: 5px; }
+.dualsense progressbar progress { border: 0; border-radius: 5px; min-height: 5px; }
+.dualsense separator { min-height: 1px; }
+.dualsense .footer { border-top: 1px solid; padding-top: 14px; }
+.dualsense .notice { border: 0; border-radius: 10px; padding: 10px; }
+.dualsense .setup { border: 1px solid; border-radius: 12px; padding: 15px; }
+.dualsense popover, popover.dualsense { border: 1px solid; border-radius: 14px; }
+.dualsense .mode-option { padding: 12px; border: 1px solid; border-radius: 10px; }
+.dualsense .mode-title { font-weight: 600; font-size: 1.000em; }
+.dualsense .small { font-size: 0.857em; }
+.dualsense entry { border-radius: 8px; padding: 9px; }
+.dualsense box.empty { padding: 18px 20px; }
+.dualsense .guide-choice { padding: 0 0 16px; border-bottom: 1px solid; }
+.dualsense .guide-mode { font-size: 1.000em; font-weight: 600; }
+.dualsense flowboxchild { padding: 0; outline: none; }
+.dualsense scrolledwindow { border: none; }
+.dualsense .art-frame { border-radius: 10px; padding: 12px 6px; }
+.dualsense button.model-tile { border: 2px solid; border-radius: 10px; padding: 10px; }
+.dualsense .model-tile .art-frame { border-radius: 6px; padding: 7px; }
+.dualsense .model-caption { font-size: 0.857em; }
+.dualsense .gallery-count { font-size: 0.857em; }
+.dualsense headerbar button.titlebutton { padding: 0; border: 0; border-radius: 50%; min-width: 24px; min-height: 24px; }
+.dualsense .controller-row { padding: 21px 0 23px; border-bottom: 1px solid; }
+.dualsense .product-stage { border-radius: 20px; padding: 18px 10px; }
+.dualsense .mode-status { font-size: 0.857em; }
+.dualsense .mode-switch { border-radius: 11px; padding: 4px; }
+.dualsense button.mode-tab { border: 1px solid; font-size: 0.929em; padding: 9px 10px; border-radius: 8px; }
+.dualsense .effects-section { padding: 16px 0; border-bottom: 1px solid; }
+.dualsense .setting-title { font-size: 1.071em; font-weight: 500; }
+.dualsense .effect-hex { font-size: 0.857em; font-family: monospace; }
+.dualsense button.swatch { min-width: 28px; min-height: 28px; padding: 3px; border: 2px solid; border-radius: 50%; font-weight: bold; }
+.dualsense .effect-preview { border-radius: 3px; min-height: 5px; }
+.dualsense .dialog-note { font-size: 0.857em; }
+.dualsense .input-key { border: 1px solid; border-radius: 8px; padding: 4px 8px; }
+.dualsense .direction-mark { border: 1px solid; border-radius: 6px; padding: 5px; }
+.dualsense .input-tabs { border-radius: 9px; padding: 3px; }
+.dualsense .input-tabs button { border-radius: 7px; }
+/* Device workspace: navigation stays visible while one controller is edited. */
+.dualsense .workspace-title { font-size: 1.286em; font-weight: 600; }
+.dualsense button.device-selector { border-radius: 16px; padding: 12px 16px; border: 1px solid; }
+.dualsense .selector-title { font-weight: 600; }
+.dualsense .controller-workspace { padding: 10px 6px 16px; }
+.dualsense .controller-hero { padding: 8px 16px; border-radius: 24px; }
+.dualsense .controller-hero .controller-name { font-size: 1.857em; font-weight: 600; }
+.dualsense .hero-battery { font-size: 2.714em; font-weight: 300; letter-spacing: -1px; }
+.dualsense .controller-hero .product-stage { padding: 8px; }
+.dualsense .controller-workspace .mode-switch { padding: 6px; border-radius: 16px; }
+.dualsense .controller-workspace button.mode-tab { padding: 12px 14px; border-radius: 12px; }
+.dualsense .controller-tools { padding: 2px; }
+.dualsense button.tool-action { border-radius: 14px; padding: 12px 10px; font-size: 0.929em; }
+.dualsense .controller-workspace { padding: 4px 4px 8px; }
+.dualsense .controller-hero { padding: 4px 12px; }
+.dualsense .controller-workspace button.mode-tab { padding: 8px 12px; }
+.dualsense button.tool-action { padding: 8px 10px; }
+.dualsense .effect-tabs button { padding: 8px 16px; }
+.dualsense .effect-choice { padding: 10px 8px; }
+.dualsense .tour-focus { outline: 2px solid; outline-offset: -2px; }
+
+.dualsense .game-step { padding: 10px 8px; border-radius: 12px; border: 1px solid; }
+.dualsense .game-choice { padding: 10px 8px; border-radius: 8px; }
+.dualsense button.mode-tab .mode-name { font-weight: 600; }
+.dualsense button.mode-tab .mode-hint { font-size: 0.857em; opacity: 0.78; }

@@ -1,0 +1,14 @@
+# Userspace validation only; no controller access or desktop login.
+FROM registry.fedoraproject.org/fedora:44
+RUN dnf install -y --setopt=install_weak_deps=False \
+       python3 python3-gobject gobject-introspection gtk3 librsvg2 libusb1 \
+       libayatana-appindicator-gtk3 polkit systemd-udev dbus-daemon \
+       xorg-x11-server-Xvfb xorg-x11-xauth dejavu-sans-fonts \
+       desktop-file-utils ca-certificates systemd shadow-utils \
+    && dnf check \
+    && dnf clean all \
+    && useradd --create-home --uid 1000 tester
+USER tester
+WORKDIR /src
+ENV LANG=C.UTF-8 GDK_BACKEND=x11 GIO_USE_VFS=local NO_AT_BRIDGE=1 PYTHONDONTWRITEBYTECODE=1
+CMD ["python3", "tests/run_userspace.py"]

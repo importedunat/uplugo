@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+# SPDX-License-Identifier: GPL-3.0-only
+@ACCESS_SOURCE@
+if __name__ == '__main__':
+    try:
+        AccessFiles().install(@HELPER_SOURCE@, access_actor())
+        print('Acesso configurado.')
+    except Exception as exc:
+        raise SystemExit(str(exc))

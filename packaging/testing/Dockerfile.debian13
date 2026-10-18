@@ -1,0 +1,16 @@
+# Userspace validation only; no controller access or desktop login.
+FROM debian:13-slim
+RUN printf '#!/bin/sh\nexit 101\n' > /usr/sbin/policy-rc.d \
+    && chmod 755 /usr/sbin/policy-rc.d \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+       python3 python3-gi gir1.2-gtk-3.0 librsvg2-common libusb-1.0-0 \
+       libayatana-appindicator3-1 pkexec udev dbus-x11 xvfb xauth \
+       fonts-dejavu-core desktop-file-utils ca-certificates systemd \
+    && test -z "$(dpkg --audit)" \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd --create-home --uid 1000 tester
+USER tester
+WORKDIR /src
+ENV LANG=C.UTF-8 GDK_BACKEND=x11 GIO_USE_VFS=local NO_AT_BRIDGE=1 PYTHONDONTWRITEBYTECODE=1
+CMD ["python3", "tests/run_userspace.py"]

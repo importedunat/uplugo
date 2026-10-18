@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <action id="org.local.dualsense.usb.steam-access">
+    <description>Configure Steam Snap access to one DualSense controller</description>
+    <description xml:lang="pt_BR">Configurar o acesso da Steam Snap a um controle DualSense</description>
+    <description xml:lang="es">Configurar el acceso de Steam Snap a un mando DualSense</description>
+    <message>Allow Uplugo to change Steam Snap access to this USB controller on this computer</message>
+    <message xml:lang="pt_BR">Permitir ao Uplugo mudar o acesso da Steam Snap a este controle USB neste computador</message>
+    <message xml:lang="es">Permitir que Uplugo cambie el acceso de Steam Snap a este mando USB en este equipo</message>
+    <defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>auth_admin</allow_active></defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/dualsense-usb-steam-access</annotate>
+  </action>
+</policyconfig>
