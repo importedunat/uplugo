@@ -87,8 +87,16 @@ with tempfile.TemporaryDirectory(prefix='dualsense-clean-') as temporary:
                          'raise SystemExit(1)\n')
     systemctl.chmod(0o755)
     no_manager=dict(env,PATH=str(shim)+os.pathsep+env.get('PATH',''))
+    try:
+        subprocess.run([str(systemctl),'--probe'],check=False)
+        calls.unlink()
+        executable=True
+    except PermissionError:
+        # Docker mounts --tmpfs noexec by default, so the shim cannot run there.
+        executable=False
+        print('systemctl shim skipped: temporary directory is noexec')
     subprocess.run([sys.executable,str(checkout/'install.py'),'--no-launch'],env=no_manager,check=True,stdout=subprocess.DEVNULL)
-    assert calls.read_text().splitlines()==[repr(['--user','show-environment'])]
+    if executable:assert calls.read_text().splitlines()==[repr(['--user','show-environment'])]
     assert preference.read_bytes()==before
     # A truncated new download must not start replacing the current copy.
     source_window=checkout/'window.py';window_bytes=source_window.read_bytes()

@@ -84,7 +84,11 @@ def main():
             return 0
     finally:
         text = json.dumps(report, ensure_ascii=False, indent=2)+'\n'
-        if args.report: args.report.write_text(text)
+        if args.report:
+            # A pre-created report in a sticky directory (e.g. a container's
+            # /run) cannot be reopened with O_CREAT under fs.protected_regular.
+            flags=os.O_WRONLY|os.O_TRUNC|(0 if args.report.exists() else os.O_CREAT)
+            with os.fdopen(os.open(args.report,flags,0o644),'w',encoding='utf-8') as stream:stream.write(text)
         print('USERSPACE RESULT:', json.dumps(report, ensure_ascii=False), flush=True)
 
 

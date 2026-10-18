@@ -133,7 +133,10 @@ class HelperRevisionTests(unittest.TestCase):
         replacement=self.path.with_name('replacement');replacement.write_text('old helper')
         os.utime(replacement,ns=(info.st_atime_ns,info.st_mtime_ns));replacement.replace(self.path)
         probe._check();self.assertEqual(probe._state,'different');self.assertEqual(len(calls),1)
-        self.path.write_text('new helper');probe._check();self.assertEqual(probe._state,'current')
+        self.path.write_text('new helper')
+        # Coarse filesystem clocks can give both writes the same timestamp.
+        os.utime(self.path,ns=(info.st_atime_ns,info.st_mtime_ns+10**9))
+        probe._check();self.assertEqual(probe._state,'current')
         self.path.unlink();probe._check();self.assertEqual(probe._state,'missing')
 
     def test_unchanged_file_uses_cached_comparison(self):

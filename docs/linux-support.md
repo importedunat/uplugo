@@ -38,7 +38,7 @@ elogind) ainda não foram testadas.
 ```sh
 docker build -f packaging/testing/Dockerfile.debian13 -t uplugo-debian-test packaging/testing
 docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
-  --tmpfs /tmp:rw,mode=1777 --tmpfs /run:rw,mode=1777 \
+  --tmpfs /tmp:rw,exec,mode=1777 --tmpfs /run:rw,mode=1777 \
   --mount type=bind,src="$PWD",dst=/src,readonly uplugo-debian-test
 ```
 

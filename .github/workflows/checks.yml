@@ -45,7 +45,7 @@ jobs:
           touch userspace-results.json
           chmod 666 userspace-results.json
           docker run --rm --read-only --network none --cap-drop ALL --security-opt no-new-privileges \
-            --tmpfs /tmp:rw,mode=1777 --tmpfs /run:rw,mode=1777 \
+            --tmpfs /tmp:rw,exec,mode=1777 --tmpfs /run:rw,mode=1777 \
             --mount type=bind,src="$PWD",dst=/src,readonly \
             --mount type=bind,src="$PWD/userspace-results.json",dst=/run/results.json \
             dualsense-distribution-test python3 tests/run_userspace.py --report /run/results.json
