@@ -2,7 +2,7 @@
 """GTK presentation widgets. No USB access or persistent writes here."""
 from pathlib import Path
 from gi.repository import Gtk, Gdk, GdkPixbuf, Pango, Atk, GObject
-from presentation import MODES, mode_consequence, mode_hint, AccessSetup
+from presentation import MODES, mode_consequence, AccessSetup
 import artwork
 from i18n import _, LANGUAGES, language
 from layout import AdaptiveBox
@@ -35,31 +35,33 @@ def button(text, callback, *classes):
 
 
 
-def purpose_button(title, purpose, symbol, callback):
-    """Keep the reason for a tool visible, including for keyboard users."""
-    widget=style(Gtk.Button(),'tool-action')
-    content=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=5)
-    content.pack_start(icon(symbol,22),False,False,0)
-    heading=label(title,wrap=True);heading.set_xalign(.5);heading.set_max_width_chars(18)
-    detail=label(purpose,'muted','small',wrap=True);detail.set_xalign(.5);detail.set_max_width_chars(20)
-    content.pack_start(heading,False,False,0);content.pack_start(detail,False,False,0)
-    widget.add(content);widget.connect('clicked',callback)
+def list_row(title, purpose, symbol, tint, callback):
+    """Settings-style row: tinted icon, title, purpose subtitle and chevron.
+    Usability tests (alpha.34) showed the purpose must stay visible."""
+    widget=style(Gtk.Button(),'list-row')
+    row=Gtk.Box(spacing=10)
+    badge=style(icon(symbol,16),'row-icon',tint);badge.set_valign(Gtk.Align.CENTER)
+    row.pack_start(badge,False,False,0)
+    text=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=1);text.set_valign(Gtk.Align.CENTER)
+    text.pack_start(label(title,wrap=True),False,False,0)
+    text.pack_start(label(purpose,'muted','small',wrap=True),False,False,0)
+    row.pack_start(text,True,True,0)
+    chevron=style(icon('go-next-symbolic',12),'row-chevron');row.pack_end(chevron,False,False,0)
+    widget.add(row);widget.connect('clicked',callback)
     accessible(widget,title,purpose)
     return widget
 
 
 class ModeButton(Gtk.Button):
-    """Mode tab with a title and a one-line consequence; get_label() is the title."""
-    def __init__(self, key, image, hint):
+    """One segment of the mode control; get_label() is the title. The
+    consequence lives in the tooltip and in the caption below the control."""
+    def __init__(self):
         super().__init__()
-        content=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=3)
-        content.pack_start(icon(image,22),False,False,0)
-        self.title,self.hint=Gtk.Label(),Gtk.Label(label=hint)
-        for line,name in ((self.title,'mode-name'),(self.hint,'mode-hint')):
-            style(line,name);line.set_xalign(.5);line.set_justify(Gtk.Justification.CENTER)
-            line.set_line_wrap(True);line.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR);line.set_max_width_chars(18)
-            content.pack_start(line,False,False,0)
-        self.add(content)
+        self.title=style(Gtk.Label(),'mode-name')
+        self.title.set_xalign(.5);self.title.set_justify(Gtk.Justification.CENTER)
+        self.title.set_line_wrap(True);self.title.set_line_wrap_mode(Pango.WrapMode.WORD_CHAR)
+        self.title.set_max_width_chars(18)
+        self.add(self.title)
 
     def get_label(self):
         return self.title.get_text()
@@ -279,10 +281,10 @@ class ControllerCard(Gtk.Box):
         self.art_key=None;self.popover=None;self.target=None
         self.get_accessible().set_role(Atk.Role.PANEL)
         self.menu_actions=[]
-        hero=self.hero=style(AdaptiveBox(spacing=24),'controller-hero')
+        hero=self.hero=style(AdaptiveBox(spacing=18),'controller-hero')
         portrait=self.portrait=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=3)
         portrait.set_valign(Gtk.Align.CENTER)
-        self.art=Gtk.Image();self.art_size=(240,156)
+        self.art=Gtk.Image();self.art_size=(184,120)
         self.art.set_halign(Gtk.Align.CENTER)
         self.art.get_accessible().set_name(_('Aparência escolhida para este controle'))
         self.art_frame=style(Gtk.EventBox(),'product-stage');self.art_frame.add(self.art)
@@ -298,7 +300,7 @@ class ControllerCard(Gtk.Box):
         header=Gtk.Box(spacing=12)
         self.name=label('','controller-name');self.name.set_ellipsize(Pango.EllipsizeMode.END)
         self.name.set_max_width_chars(28);header.pack_start(self.name,True,True,0)
-        more=self.more=style(Gtk.Button() if preview else Gtk.MenuButton(),'quiet')
+        more=self.more=style(Gtk.Button() if preview else Gtk.MenuButton(),'quiet','neutral')
         more.add(icon('view-more-symbolic'));more.get_accessible().set_name(_('Mais opções deste controle'))
         if not preview:
             menu=style(Gtk.Popover.new(more),'dualsense');options=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=4);options.set_border_width(10)
@@ -324,33 +326,37 @@ class ControllerCard(Gtk.Box):
         self.mode=label('','mode-status');info.pack_start(self.mode,False,False,0)
         self.battery.set_tooltip_text(_('Leitura do controle, em passos aproximados de 10%. Não mede a corrente do cabo.'))
         self.pack_start(hero,False,False,0)
-        self.mode_buttons={};switch=style(AdaptiveBox(spacing=6),'mode-switch')
-        for key,image in [('charge','battery-symbolic'),('proxy','preferences-system-symbolic'),('play','input-gaming-symbolic')]:
-            choice=style(ModeButton(key,image,mode_hint(key)),'mode-tab');choice.set_label(MODES[key][0])
+        modes=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=6);modes.set_margin_top(6)
+        modes.pack_start(label(_('Modo de uso'),'section-header'),False,False,0)
+        self.mode_buttons={};switch=style(AdaptiveBox(spacing=2),'mode-switch')
+        for key in ('charge','proxy','play'):
+            choice=style(ModeButton(),'mode-tab');choice.set_label(MODES[key][0])
             choice.connect('clicked',lambda b,k=key:self.choose_mode(b,k))
             choice.set_tooltip_text(MODES[key][1]);self.mode_buttons[key]=choice
             switch.pack_start(choice,True,True,0)
-        self.pack_start(switch,False,False,0)
+        modes.pack_start(switch,False,False,0)
         self.description=label('','muted','small',wrap=True);self.description.set_max_width_chars(64)
-        self.description.set_no_show_all(True);self.pack_start(self.description,False,False,0)
+        self.description.set_margin_start(4)
+        self.description.set_no_show_all(True);modes.pack_start(self.description,False,False,0)
         self.rule=label('','warning','small',wrap=True);self.rule.set_no_show_all(True)
-        self.pack_start(self.rule,False,False,0)
-        actions=self.tools=style(AdaptiveBox(spacing=8),'controller-tools')
-        self.customize=purpose_button(_('Luzes e efeitos'),_('Escolha cores, vibração e peso dos gatilhos.'),
-                                      'applications-graphics-symbolic',lambda b:self.action(self.model.identity,'effects'))
-        self.test_input=purpose_button(_('Testar botões'),_('Confira se cada botão e analógico responde.'),
-                                       'input-gaming-symbolic',lambda b:self.action(self.model.identity,'input'))
-        self.touchpad=purpose_button(_('Touchpad e cursor'),_('Evite mover o mouse enquanto joga.'),
-                                     'input-touchpad-symbolic',lambda b:self.action(self.model.identity,'touchpad'))
-        self.details=purpose_button(_('Bateria e conexão'),_('Veja se a carga aumentou com o tempo.'),
-                                    'battery-good-symbolic',lambda b:self.action(self.model.identity,'details'))
-        for pair in ((self.customize,self.test_input),(self.touchpad,self.details)):
-            group=AdaptiveBox(spacing=8)
-            for tool in pair:group.pack_start(tool,True,True,0)
-            actions.pack_start(group,True,True,0)
+        self.rule.set_margin_start(4);modes.pack_start(self.rule,False,False,0)
+        self.pack_start(modes,False,False,0)
+        actions=self.tools=style(Gtk.Box(orientation=Gtk.Orientation.VERTICAL),'group','controller-tools')
+        actions.set_margin_top(10)
+        self.customize=list_row(_('Luzes e efeitos'),_('Escolha cores, vibração e peso dos gatilhos.'),
+                                'applications-graphics-symbolic','tint-purple',lambda b:self.action(self.model.identity,'effects'))
+        self.test_input=list_row(_('Testar botões'),_('Confira se cada botão e analógico responde.'),
+                                 'input-gaming-symbolic','tint-blue',lambda b:self.action(self.model.identity,'input'))
+        self.touchpad=list_row(_('Touchpad e cursor'),_('Evite mover o mouse enquanto joga.'),
+                               'input-touchpad-symbolic','tint-orange',lambda b:self.action(self.model.identity,'touchpad'))
+        self.details=list_row(_('Bateria e conexão'),_('Veja se a carga aumentou com o tempo.'),
+                              'battery-good-symbolic','tint-green',lambda b:self.action(self.model.identity,'details'))
+        for index,tool in enumerate((self.customize,self.test_input,self.touchpad,self.details)):
+            if index:actions.pack_start(Gtk.Separator(),False,False,0)
+            actions.pack_start(tool,False,False,0)
         self.pack_start(actions,False,False,0)
         self.effects_hint=label('','muted','small',wrap=True);self.effects_hint.set_no_show_all(True)
-        self.effects_hint.set_halign(Gtk.Align.CENTER);self.pack_start(self.effects_hint,False,False,0)
+        self.effects_hint.set_margin_start(4);self.pack_start(self.effects_hint,False,False,0)
         self.update(model)
 
     def do_get_preferred_width_for_height(self,height):
@@ -359,7 +365,7 @@ class ControllerCard(Gtk.Box):
         return self.get_preferred_width()
 
     def do_size_allocate(self,allocation):
-        art_size=(160,104) if allocation.width<620 else (240,156)
+        art_size=(144,94) if allocation.width<560 else (184,120)
         if art_size!=self.art_size:
             self.art_size=art_size;self.update_art()
         Gtk.Box.do_size_allocate(self,allocation)
@@ -413,7 +419,6 @@ class ControllerCard(Gtk.Box):
             if active:context.add_class('selected')
             title=MODES[key][0]
             choice.set_label(('✓  ' if active else '')+title)
-            if choice.hint.get_text()!=mode_hint(key):choice.hint.set_text(mode_hint(key))
             accessible(choice,title+(_(' · modo ativo') if active else '')+' — '+self.context,MODES[key][1])
             choice.set_sensitive(model.can_change)
         description={'charge':_('A Steam não recebe este controle. Luzes e vibração desligadas.'),
@@ -545,24 +550,24 @@ class EffectIllustration(Gtk.Stack):
         key=(tuple(values['rgb']),values['vibration'],values['triggers'],section)
         if key==self.last:return
         self.last=key;shapes=geometry();rgb='#'+''.join(f'{v:02x}' for v in values['rgb'])
-        accent=rgb if section=='color' else '#80b5ff'
+        accent=rgb if section=='color' else '#409cff'
         # Original 910×735 silhouette: no guessed gamepad geometry or photo edits.
         pieces=['<svg xmlns="http://www.w3.org/2000/svg" width="360" height="220" viewBox="-100 -20 1110 780">',
-                '<g fill="#172231">'+shapes['shell_fill']+'</g>',
-                '<g fill="#29394f">'+shapes['panels_fill']+'</g>',
-                '<g fill="#8395ae">'+shapes['Controller']+'</g>',
+                '<g fill="#262628">'+shapes['shell_fill']+'</g>',
+                '<g fill="#303032">'+shapes['panels_fill']+'</g>',
+                '<g fill="#8e8e93">'+shapes['Controller']+'</g>',
                 f'<g fill="none" stroke="{rgb}" stroke-width="12" stroke-linecap="round"><path d="M248 176L271 291Q277 325 305 337 M660 176L637 291Q631 325 603 337"/></g>']
         for part in ('Trackpad','Up','Down','Left','Right','Triangle','Circle','Cross','Square','Create','Options','L3','R3','PS','Mute'):
-            pieces.append('<g fill="#26364a">'+shapes.get(part+'_infill','')+'</g>')
-            pieces.append('<g fill="#b5c2d4">'+shapes.get(part+'_outline','')+'</g>')
+            pieces.append('<g fill="#2c2c2e">'+shapes.get(part+'_infill','')+'</g>')
+            pieces.append('<g fill="#c7c7cc">'+shapes.get(part+'_outline','')+'</g>')
         strength={'game':0,'off':0,'light':1,'medium':2,'firm':3}[values['triggers']]
         for key,x in [('L2',157),('R2',751)]:
             selected=section=='triggers'
-            pieces.append('<g fill="'+(accent if selected else '#52657e')+'">'+shapes[key+'_infill']+'</g>')
+            pieces.append('<g fill="'+(accent if selected else '#48484a')+'">'+shapes[key+'_infill']+'</g>')
             pieces.append(f'<text x="{x}" y="70" text-anchor="middle" font-family="sans-serif" font-size="35" fill="#ffffff">{key}</text>')
             if selected:
                 for level in range(3):
-                    pieces.append(f'<rect x="{x-43+level*32}" y="110" width="24" height="12" rx="4" fill="'+(accent if level<strength else '#37455a')+'"/>')
+                    pieces.append(f'<rect x="{x-43+level*32}" y="110" width="24" height="12" rx="4" fill="'+(accent if level<strength else '#3a3a3c')+'"/>')
         if section=='vibration' and values['vibration']!='off':
             for radius in range(1,2 if values['vibration']=='low' else 4):
                 x=-8-radius*23
@@ -707,18 +712,58 @@ class ContentClamp(Gtk.Bin):
         self.get_child().size_allocate(rect)
 
 
+class Workspace(AdaptiveBox):
+    """Source list beside the content; above it, as a strip, when narrow."""
+    WIDE=720
+
+    def __init__(self,sidebar,selectors,content):
+        super().__init__(spacing=0)
+        self.sidebar,self.selectors=sidebar,selectors
+        self.wide=None
+        self.pack_start(sidebar,False,False,0);self.pack_start(content,True,True,0)
+        self.layout(False)
+
+    def widths(self):
+        # Stacked sizes: the window may open narrow; the sidebar appears when
+        # it grows past WIDE.
+        sizes=[child.get_preferred_width() for child in self.get_children() if child.get_visible()]
+        return max((size[0] for size in sizes),default=0),max((size[1] for size in sizes),default=0)
+
+    def horizontal_width(self):
+        # Decide by the width alone, so the choice never depends on the
+        # orientation it produces.
+        return max(self.widths()[0],self.WIDE)
+
+    def arrange(self,width):
+        AdaptiveBox.arrange(self,width)
+        self.layout(self.get_orientation()==Gtk.Orientation.HORIZONTAL)
+
+    def layout(self,wide):
+        if wide==self.wide:return
+        self.wide=wide
+        self.selectors.set_orientation(Gtk.Orientation.VERTICAL if wide else Gtk.Orientation.HORIZONTAL)
+        self.selectors.set_homogeneous(not wide)
+        # ponytail: no scroller, so wrapped labels get their real height. The
+        # narrow strip shares the width; past ~3 controllers it widens the
+        # window. Add a horizontal scroller with fixed row height if needed.
+        self.selectors.set_spacing(2 if wide else 8)
+        self.sidebar.set_size_request(232 if wide else -1,-1)
+        context=self.sidebar.get_style_context()
+        if wide:context.remove_class('compact')
+        else:context.add_class('compact')
+
+
 class Dashboard(Gtk.Box):
     def __init__(self, owner):
-        super().__init__(orientation=Gtk.Orientation.VERTICAL,spacing=10)
-        self.set_border_width(18)
+        super().__init__(orientation=Gtk.Orientation.VERTICAL,spacing=0)
         self.owner=owner;self.items={};self.selectors={};self.selected=None;self.tour=None
         self.connect('destroy',lambda w:self.tour.close(False) if self.tour else None)
-        bar=AdaptiveBox(spacing=10)
+        bar=style(AdaptiveBox(spacing=10),'toolbar')
         brand_row=Gtk.Box(spacing=10)
         bar.pack_start(brand_row,True,True,0)
         brand=Gtk.Image.new_from_file(str(ASSETS/'dualsense-usb.svg'))
         brand.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_file_at_scale(str(ASSETS/'brand-mark.svg'),32,32,True))
-        brand_row.pack_start(brand,False,False,0);brand_row.pack_start(label('UPLUGO','brand'),True,True,0)
+        brand_row.pack_start(brand,False,False,0);brand_row.pack_start(label('Uplugo','brand'),True,True,0)
         bar_actions=Gtk.Box(spacing=8);bar.pack_end(bar_actions,False,False,0)
         compatibility=self.compatibility=button(_('Modo por jogo'),lambda b:owner.profiles_dialog(),'quiet')
         compatibility.set_tooltip_text(_('Trocar para os efeitos do jogo ao abri-lo e voltar aos seus ajustes ao fechar.'))
@@ -832,20 +877,17 @@ class Dashboard(Gtk.Box):
             settings_scroll.set_propagate_natural_height(True);settings_scroll.set_overlay_scrolling(False)
             settings_scroll.add(options);settings.add(settings_scroll);settings_scroll.show_all();preferences.set_popover(settings)
         bar_actions.pack_end(preferences,False,False,0);self.pack_start(bar,False,False,0)
-        heading=AdaptiveBox(spacing=12)
-        self.heading=heading
-        left=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=6)
-        left.pack_start(label(_('Seus controles'),'workspace-title',wrap=True),False,False,0)
-        self.count=label(_('Conecte um DualSense para começar.'),'muted',wrap=True)
-        left.pack_start(self.count,False,False,0)
+        # Source list: controllers on the left, like a Settings sidebar.
+        heading=self.heading=style(Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=4),'sidebar')
+        heading.pack_start(label(_('Seus controles'),'sidebar-title',wrap=True),False,False,0)
+        self.count=label(_('Conecte um DualSense para começar.'),'muted','small',wrap=True)
+        self.count.set_max_width_chars(26);self.count.set_margin_start(8);self.count.set_margin_end(8)
+        heading.pack_start(self.count,False,False,0)
         self.count.set_no_show_all(True);self.count.set_visible(preview)
         self.guide=button(_('Qual modo usar?'),lambda b:self.show_mode_guide(),'quiet','small')
-        self.guide.set_halign(Gtk.Align.END);heading.pack_end(self.guide,False,False,0)
-        heading.pack_start(left,True,True,0)
+        self.guide.set_halign(Gtk.Align.START);heading.pack_end(self.guide,False,False,0)
         self.health=label(_('USB • AO VIVO'),'status-pill','cyan')
         self.health.set_valign(Gtk.Align.CENTER);self.health.set_no_show_all(True)
-        heading.show_all();heading.set_no_show_all(True)
-        self.pack_start(heading,False,False,0)
         self.guard_notice=label('','muted','small',wrap=True)
         self.guard_notice.set_no_show_all(True)
         self.pack_start(self.guard_notice,False,False,0)
@@ -886,14 +928,9 @@ class Dashboard(Gtk.Box):
         self.pack_start(self.support_update,False,False,0)
         self.stack=Gtk.Stack()
         self.stack.set_vhomogeneous(False);self.stack.set_hhomogeneous(False)
-        self.selector_row=Gtk.Box(spacing=10);self.selector_row.set_homogeneous(True)
-        self.selector_scroll=Gtk.ScrolledWindow()
-        self.selector_scroll.set_policy(Gtk.PolicyType.AUTOMATIC,Gtk.PolicyType.NEVER)
-        self.selector_scroll.set_propagate_natural_height(True)
-        self.selector_scroll.set_overlay_scrolling(False)
-        self.selector_scroll.add(self.selector_row)
-        self.pack_start(self.selector_scroll,False,False,0)
-        self.selector_scroll.show_all();self.selector_scroll.set_no_show_all(True)
+        self.selector_row=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=2)
+        heading.pack_start(self.selector_row,False,False,0)
+        heading.show_all();heading.set_no_show_all(True)
         self.cards=Gtk.Stack();self.cards.set_vhomogeneous(False);self.cards.set_hhomogeneous(False)
         self.cards.set_transition_type(Gtk.StackTransitionType.CROSSFADE);self.cards.set_transition_duration(160)
         self.stack.add_named(self.cards,'controllers')
@@ -902,7 +939,8 @@ class Dashboard(Gtk.Box):
         illustration=Gtk.Image.new_from_pixbuf(artwork.picture('white',220,140,False)[0])
         empty.pack_start(illustration,False,False,0)
         for text,cls in [(_('Conecte seu DualSense'),'controller-name'),(_('Use um cabo USB de dados. O controle aparecerá automaticamente.'),'muted')]:
-            line=label(text,cls,wrap=True);line.set_halign(Gtk.Align.CENTER);empty.pack_start(line,False,False,0)
+            line=label(text,cls,wrap=True);line.set_halign(Gtk.Align.CENTER)
+            line.set_xalign(.5);line.set_justify(Gtk.Justification.CENTER);empty.pack_start(line,False,False,0)
         first_language=Gtk.Box(spacing=12);first_language.set_halign(Gtk.Align.CENTER)
         first_language.pack_start(label(_('Idioma'),'small'),False,False,0)
         self.first_language=Gtk.ComboBoxText()
@@ -939,14 +977,15 @@ class Dashboard(Gtk.Box):
         from app_info import VERSION
         footer.pack_end(label('v'+VERSION+' • USB','muted','small'),False,False,0)
         self.pack_end(footer,False,False,0)
-        page=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=12)
+        page=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=12);page.set_border_width(20)
         for child in list(self.get_children()):
             if child in (bar,footer):continue
             self.remove(child);page.pack_start(child,False,False,0)
-        page.reorder_child(self.selector_scroll,1)
         self.scroll=Gtk.ScrolledWindow();self.scroll.set_policy(Gtk.PolicyType.NEVER,Gtk.PolicyType.AUTOMATIC)
         self.scroll.set_overlay_scrolling(False)
-        self.scroll.add(page);self.pack_start(self.scroll,True,True,0);self.reorder_child(self.scroll,1)
+        self.scroll.add(ContentClamp(page,760))
+        self.workspace=Workspace(heading,self.selector_row,self.scroll)
+        self.pack_start(self.workspace,True,True,0);self.reorder_child(self.workspace,1)
 
     def update(self, models, helper_ready):
         self.heading.set_visible(bool(models))
@@ -988,10 +1027,9 @@ class Dashboard(Gtk.Box):
                 self.items[model.identity]=card;self.cards.add_named(card,model.identity);card.show_all()
                 selector=ControllerSelector(model,self.select_controller,not getattr(self.owner,'preview',False) or getattr(self.owner,'local_images',False))
                 selector.connect('key-press-event',self.navigate_controller)
-                self.selectors[model.identity]=selector;self.selector_row.pack_start(selector,True,True,0);selector.show_all()
+                self.selectors[model.identity]=selector;self.selector_row.pack_start(selector,False,True,0);selector.show_all()
             self.items[model.identity].update(model)
             self.selectors[model.identity].update(model)
-        self.selector_scroll.set_visible(bool(models))
         if self.selected not in ids:self.select_controller(models[0].identity if models else None)
         self.stack.set_visible_child_name('controllers' if models else 'empty')
 
@@ -1001,11 +1039,11 @@ class Dashboard(Gtk.Box):
         self.tour=InterfaceTour(self)
 
     def navigate_controller(self,widget,event):
-        if event.keyval not in (Gdk.KEY_Left,Gdk.KEY_Right,Gdk.KEY_Home,Gdk.KEY_End):return False
+        if event.keyval not in (Gdk.KEY_Left,Gdk.KEY_Right,Gdk.KEY_Up,Gdk.KEY_Down,Gdk.KEY_Home,Gdk.KEY_End):return False
         keys=list(self.selectors);index=keys.index(widget.identity)
         if event.keyval==Gdk.KEY_Home:index=0
         elif event.keyval==Gdk.KEY_End:index=len(keys)-1
-        else:index=(index+(1 if event.keyval==Gdk.KEY_Right else -1))%len(keys)
+        else:index=(index+(1 if event.keyval in (Gdk.KEY_Right,Gdk.KEY_Down) else -1))%len(keys)
         self.select_controller(keys[index]);self.selectors[keys[index]].grab_focus()
         return True
 

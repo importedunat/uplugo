@@ -19,8 +19,12 @@ class AdaptiveBox(Gtk.Box):
         extra=self.get_border_width()*2
         return padding.left+padding.right+border.left+border.right+extra,padding.top+padding.bottom+border.top+border.bottom+extra
 
+    def horizontal_width(self):
+        """Width from which the children are laid out side by side."""
+        return self.widths()[1]
+
     def arrange(self,width):
-        _minimum,horizontal=self.widths()
+        horizontal=self.horizontal_width()
         direction=Gtk.Orientation.HORIZONTAL if width>=horizontal else Gtk.Orientation.VERTICAL
         if direction!=self.get_orientation():self.set_orientation(direction)
 
@@ -37,7 +41,7 @@ class AdaptiveBox(Gtk.Box):
         children=[child for child in self.get_children() if child.get_visible()]
         horizontal_border,border=self.insets()
         gap=max(0,len(children)-1)*self.get_spacing()
-        _minimum,horizontal=self.widths()
+        horizontal=self.horizontal_width()
         if width>=horizontal:
             expandable=[child for child in children if self.child_get_property(child,'expand')]
             extra=max(0,width-horizontal)//max(1,len(expandable))
@@ -59,6 +63,7 @@ class AdaptiveStackSwitcher(Gtk.StackSwitcher):
         self.set_homogeneous(False)
 
     widths=AdaptiveBox.widths
+    horizontal_width=AdaptiveBox.horizontal_width
     insets=AdaptiveBox.insets
     arrange=AdaptiveBox.arrange
     do_get_request_mode=AdaptiveBox.do_get_request_mode

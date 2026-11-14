@@ -330,3 +330,39 @@ ganhou uma linha curta embaixo do nome.
 
 Nova opção em Preferências: abrir ao ligar o computador. O app começa na bandeja
 e não muda os modos salvos.
+
+## Aparência no estilo macOS
+
+Objetivo: parecer feito à mão, com o cuidado de detalhe dos apps da Apple, e
+deixar de lado a receita genérica de cartões com borda brilhante, tudo
+centralizado e com o mesmo peso. A direção escolhida segue os Ajustes do
+Sistema do macOS.
+
+- **Janela principal:** os controles ficam numa barra lateral. Em janelas com
+  menos de 720 px, ela vira uma faixa no topo (`Workspace`). O painel do
+  controle tem cabeçalho com foto, nome e bateria; o modo vira um seletor
+  segmentado sob “Modo de uso”, com a consequência do modo ativo logo abaixo;
+  as ferramentas formam uma lista agrupada com ícone colorido, subtítulo de
+  finalidade e seta. O subtítulo permanece visível pelo resultado dos testes
+  de uso da alpha.34. A coluna de conteúdo é limitada a 760 px; a barra lateral
+  fica presa à borda da janela.
+- **Paleta:** cinzas neutros do modo escuro do macOS (`#1c1c1e`, `#2c2c2e`) e
+  azul apenas no que é clicável ou selecionado. Pares de texto mantêm no
+  mínimo 4,5:1. Botões de barra e o menu do controle ficam neutros; links usam
+  azul. As cores ficam em `@define-color` no `colors.css`, que continua sendo
+  removido nos temas de alto contraste.
+- **Estrutura:** controles com 7 px de raio, seções agrupadas com 10 px, linhas
+  finas como separadores e anel de foco suave. Abas de Luzes e efeitos e de
+  Testar botões usam o mesmo seletor segmentado; seções de efeitos viram grupos.
+- **Desenhos:** o blueprint, os analógicos e a ilustração de efeitos trocaram o
+  azul-marinho/ciano por grafite. Azul continua significando “pressionado
+  agora”; verde marca “já respondeu”.
+
+Mantido sem mudança: confirmação antes de trocar o modo, ✓ apenas depois da
+resposta do controle, nomes ATK, navegação por teclado (setas também na
+vertical da barra lateral) e reorganização em telas estreitas.
+
+Limites conhecidos: a faixa estreita divide a largura sem rolagem, o que alarga
+a janela a partir de uns quatro controles conectados. Falta revisão humana do
+novo visual com leitor de tela, escala 200% e temas claros de alto contraste.
+

@@ -31,7 +31,7 @@ class MotionPlot(Gtk.Image):
         samples=self.trace.samples
         extent=self.extent()
         end=samples[-1][0] if samples else 0
-        colors=('#59a6ff','#d9912e','#ad85f2')
+        colors=('#409cff','#ff9f0a','#bf5af2')
         high_contrast='highcontrast' in str(Gtk.Settings.get_default().get_property('gtk-theme-name')).lower()
         signature=(tuple(samples),width,foreground,high_contrast)
         if signature==self.signature:return

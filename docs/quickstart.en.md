@@ -7,7 +7,7 @@ You choose whether games or the app control the effects. This is an experimental
 alpha: physical testing currently covers standard DualSense controllers on the
 development Ubuntu machine. Other distributions and the Edge need further testing.
 
-The main window rearranges controller photos and actions to fit narrower screens. Select a controller at the top to open its controls. Help highlights each function in place. Text follows GTK font and text scaling settings; GTK high-contrast themes keep their own interface colors.
+The main window rearranges controller photos and actions to fit narrower screens. Select a controller in the sidebar (at the top in narrow windows) to open its controls. Help highlights each function in place. Text follows GTK font and text scaling settings; GTK high-contrast themes keep their own interface colors.
 
 ## Install
 

@@ -17,7 +17,7 @@ Escolha quem controla os efeitos, acompanhe a bateria e mantenha tudo na bandeja
 
 ## Jogar ou carregar
 
-Selecione um controle no topo. Na área dele, os três modos ficam visíveis. O ✓ marca o modo
+Selecione um controle na lista à esquerda (no topo, em janelas estreitas). Na área dele, os três modos ficam visíveis. O ✓ marca o modo
 confirmado. Clique em outro modo, confira a consequência e confirme:
 
 | Escolha | O que acontece |
