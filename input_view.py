@@ -115,7 +115,7 @@ class InputPanel(Gtk.Box):
         self.controls.pack_start(self.current, False, False, 0)
         legend=AdaptiveBox(spacing=8)
         for text,classes in [(_('● Pressionado'),('input-key','pressed')),
-                             (_('✓ Já respondeu'),('input-key',)),
+                             (_('✓ Já respondeu'),('input-key','seen')),
                              (_('Ainda não testado'),('input-key',))]:
             item=label(text,*classes,wrap=True)
             legend.pack_start(item,False,False,0)
@@ -207,9 +207,12 @@ class InputPanel(Gtk.Box):
 
     def render_buttons(self, held):
         for name, widget in self.keys.items():
-            widget.get_style_context().remove_class('pressed')
+            context = widget.get_style_context()
+            context.remove_class('pressed'); context.remove_class('seen')
             if name in held:
                 style(widget, 'pressed')
+            elif name in self.seen:
+                style(widget, 'seen')
             widget.set_text(('● ' if name in held else '✓ ' if name in self.seen else '')+name)
             widget.get_accessible().set_name(name+(_(' · pressionado') if name in held else
                                                    _(' · já respondeu') if name in self.seen else _(' · ainda não observado')))

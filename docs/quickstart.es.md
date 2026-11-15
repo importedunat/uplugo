@@ -7,7 +7,7 @@ Puedes elegir si los efectos los controla el juego o la app. Es una versión alp
 experimental: las pruebas físicas actuales cubren DualSense estándar en el equipo
 Ubuntu de desarrollo. Otras distribuciones y el Edge necesitan más pruebas.
 
-La ventana principal reorganiza las fotos y acciones para pantallas más estrechas. Selecciona un mando arriba para abrir sus controles. Ayuda destaca cada función en su lugar. El texto respeta la fuente y la escala de texto de GTK; los temas GTK de alto contraste conservan sus colores de interfaz.
+La ventana principal reorganiza las fotos y acciones para pantallas más estrechas. Selecciona un mando en la barra lateral (arriba en ventanas estrechas) para abrir sus controles. Ayuda destaca cada función en su lugar. El texto respeta la fuente y la escala de texto de GTK; los temas GTK de alto contraste conservan sus colores de interfaz.
 
 ## Instalar
 

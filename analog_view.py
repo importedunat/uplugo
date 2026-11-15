@@ -36,20 +36,20 @@ class StickPlot(Gtk.Image):
     def render(self, width):
         current, trail = self.frame
         parts = ['<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">',
-                 '<rect x="1" y="1" width="238" height="238" rx="12" fill="#0b2030" stroke="#33576d"/>',
-                 '<rect x="24" y="24" width="192" height="192" fill="none" stroke="#284a60"/>',
-                 '<circle cx="120" cy="120" r="96" fill="none" stroke="#42687f"/>',
-                 '<circle cx="120" cy="120" r="48" fill="none" stroke="#284a60" stroke-dasharray="3 5"/>',
-                 '<path d="M24 120H216 M120 24V216" fill="none" stroke="#42687f"/>',
-                 '<g font-family="sans-serif" font-size="11" fill="#9fb0c8" text-anchor="middle">',
+                 '<rect x="1" y="1" width="238" height="238" rx="12" fill="#1f1f21" stroke="#3a3a3c"/>',
+                 '<rect x="24" y="24" width="192" height="192" fill="none" stroke="#2f2f31"/>',
+                 '<circle cx="120" cy="120" r="96" fill="none" stroke="#48484a"/>',
+                 '<circle cx="120" cy="120" r="48" fill="none" stroke="#2f2f31" stroke-dasharray="3 5"/>',
+                 '<path d="M24 120H216 M120 24V216" fill="none" stroke="#48484a"/>',
+                 '<g font-family="sans-serif" font-size="11" fill="#98989d" text-anchor="middle">',
                  '<text x="120" y="17">−Y</text><text x="120" y="232">+Y</text>',
                  '<text x="13" y="124">−X</text><text x="227" y="124">+X</text></g>']
         if trail:
             points = ' '.join(f'{120+x*.96:.2f},{120+y*.96:.2f}' for x, y in trail)
-            parts.append(f'<polyline points="{points}" fill="none" stroke="#6da1e8" stroke-width="1.5" opacity=".65"/>')
+            parts.append(f'<polyline points="{points}" fill="none" stroke="#409cff" stroke-width="1.5" opacity=".65"/>')
         if current is not None:
             x, y = (120+value*.96 for value in current)
-            parts.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="5" fill="#8ce6f3"/>')
+            parts.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="5" fill="#ffffff"/>')
         parts.append('</svg>')
         loader = GdkPixbuf.PixbufLoader.new_with_type('svg')
         loader.set_size(width, width); loader.write(''.join(parts).encode()); loader.close()

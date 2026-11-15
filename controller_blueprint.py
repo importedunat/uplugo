@@ -14,11 +14,11 @@ import re
 import xml.etree.ElementTree as ET
 
 WIDTH, HEIGHT = 900, 560
-INK = '#90bed4'
-DIM = '#42687f'
-FILL = '#122e42'
-PRESSED = '#087eae'
-SEEN = '#8ce6f3'
+INK = '#aeaeb2'
+DIM = '#48484a'
+FILL = '#2c2c2e'
+PRESSED = '#0a84ff'
+SEEN = '#30d158'
 # The imported shapes use the original unscaled 910 × 735 coordinate system.
 SCALE, OFFSET_X, OFFSET_Y = .62, 168, 40
 GEOMETRY = Path(__file__).resolve().parent/'assets/dualsense-blueprint.svg'
@@ -48,7 +48,7 @@ def position(x, y):
     return round(OFFSET_X+x*SCALE, 2), round(OFFSET_Y+y*SCALE, 2)
 
 
-def text(x, y, value, size=16, color='#d4ecf6', anchor='middle'):
+def text(x, y, value, size=16, color='#f5f5f7', anchor='middle'):
     return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" dominant-baseline="central" '
             f'font-family="sans-serif" font-size="{size}" fill="{color}">{escape(value)}</text>')
 
@@ -62,25 +62,25 @@ def blueprint_svg(held=(), seen=(), sticks=None, triggers=None, touches=None, la
     header = f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">'
     static = [f'''
 <defs>
- <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#284a60" stroke-width=".6"/></pattern>
- <pattern id="major" width="125" height="125" patternUnits="userSpaceOnUse"><rect width="125" height="125" fill="url(#grid)"/><path d="M125 0H0V125" fill="none" stroke="#3b6075" stroke-width=".7"/></pattern>
+ <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#2a2a2c" stroke-width=".6"/></pattern>
+ <pattern id="major" width="125" height="125" patternUnits="userSpaceOnUse"><rect width="125" height="125" fill="url(#grid)"/><path d="M125 0H0V125" fill="none" stroke="#333335" stroke-width=".7"/></pattern>
 </defs>
-<rect x="1" y="1" width="898" height="558" rx="14" fill="#0b2030" stroke="#33576d"/>
+<rect x="1" y="1" width="898" height="558" rx="14" fill="#1f1f21" stroke="#3a3a3c"/>
 <rect x="14" y="14" width="872" height="532" rx="5" fill="url(#major)" opacity=".5"/>
 <path d="M25 43V25H43 M857 25H875V43 M25 517V535H43 M857 535H875V517" fill="none" stroke="{DIM}"/>
-<path d="M450 58V508 M145 222H757 M293 300H607" fill="none" stroke="#537b92" stroke-dasharray="5 7" opacity=".35"/>
+<path d="M450 58V508 M145 222H757 M293 300H607" fill="none" stroke="#636366" stroke-dasharray="5 7" opacity=".35"/>
 ''']
-    static += [text(38, 42, 'DUALSENSE', 14, '#9cbdcf', 'start'),
-              text(862, 42, _('VISTA FRONTAL'), 12, '#9cbdcf', 'end'),
-              text(450, 73, _('L2 / R2 · vista expandida'), 12, '#9cbdcf')]
+    static += [text(38, 42, 'DUALSENSE', 14, '#98989d', 'start'),
+              text(862, 42, _('VISTA FRONTAL'), 12, '#98989d', 'end'),
+              text(450, 73, _('L2 / R2 · vista expandida'), 12, '#98989d')]
     transform = f'translate({OFFSET_X} {OFFSET_Y}) scale({SCALE})'
-    static.append(f'<g transform="{transform}" fill="#0d2638">{shapes["shell_fill"]}</g>')
-    static.append(f'<g transform="{transform}" fill="#17354a">{shapes["panels_fill"]}</g>')
+    static.append(f'<g transform="{transform}" fill="#262628">{shapes["shell_fill"]}</g>')
+    static.append(f'<g transform="{transform}" fill="#303032">{shapes["panels_fill"]}</g>')
     static.append(f'<g transform="{transform}" fill="{INK}">{shapes["Controller"]}</g>')
     parts = []
 
     def marker(x, y, active=False):
-        return (f'<circle cx="{x}" cy="{y}" r="7" fill="#0b2939" stroke="{SEEN}"/>'
+        return (f'<circle cx="{x}" cy="{y}" r="7" fill="#1f1f21" stroke="{SEEN}"/>'
                 +(f'<circle cx="{x}" cy="{y}" r="3" fill="{SEEN}"/>' if active else
                   f'<path d="M{x-3} {y}l2 2 4-4" fill="none" stroke="{SEEN}" stroke-width="1.5"/>'))
 
@@ -100,7 +100,7 @@ def blueprint_svg(held=(), seen=(), sticks=None, triggers=None, touches=None, la
 
     def leader(points, caption, x, y, anchor='middle'):
         static.append(f'<polyline points="{points}" fill="none" stroke="{DIM}" stroke-width="1"/>')
-        static.append(text(x, y, caption, 13, '#accbdc', anchor))
+        static.append(text(x, y, caption, 13, '#aeaeb2', anchor))
 
     # Shoulder buttons retain the actual curved outline. The expanded trigger
     # view is explicitly labelled; no guess at their hidden front-view surface.
@@ -125,13 +125,13 @@ def blueprint_svg(held=(), seen=(), sticks=None, triggers=None, touches=None, la
         # This is a visual guide; raw sensor coordinates remain in Details.
         u, v = x / (TOUCH_WIDTH-1), y / (TOUCH_HEIGHT-1)
         px, py = position(280+25*v+u*(348-50*v), 166+143*v)
-        color = '#8ce6f3' if slot == 0 else '#ffd27b'
+        color = '#64d2ff' if slot == 0 else '#ff9f0a'
         parts.append(f'<g id="touch-{slot}" data-contact="{contact_id}" data-x="{x}" data-y="{y}">'
-                     f'<circle cx="{px:.2f}" cy="{py:.2f}" r="11" fill="#0b2030" stroke="{color}" stroke-width="2"/>'
+                     f'<circle cx="{px:.2f}" cy="{py:.2f}" r="11" fill="#1f1f21" stroke="{color}" stroke-width="2"/>'
                      + text(px, py+4, str(slot+1), 13, color) + '</g>')
     # Blue light rails flank the touchpad; speaker holes and shell seams remain
     # in the physical geometry rather than generic circles/rectangles.
-    static.append(f'<g transform="{transform}" fill="none" stroke="#51bfe6" stroke-width="3" opacity=".8"><path d="M248 176L271 291Q277 325 305 337 M660 176L637 291Q631 325 603 337"/></g>')
+    static.append(f'<g transform="{transform}" fill="none" stroke="#636366" stroke-width="3" opacity=".8"><path d="M248 176L271 291Q277 325 305 337 M660 176L637 291Q631 325 603 337"/></g>')
 
     for name, source, center, mark in [
         ('↑','Up',(158,250),(186,229)), ('→','Right',(207,295),(229,274)),
@@ -148,7 +148,7 @@ def blueprint_svg(held=(), seen=(), sticks=None, triggers=None, touches=None, la
         else:
             angle={'↑':0,'→':90,'↓':180,'←':270}[name]
             symbol=f'<path transform="rotate({angle} {x} {y})" d="M{x} {y-4}l4 6h-8Z"/>'
-        parts.append(f'<g fill="none" stroke="#c4dfeb" stroke-width="1.5" stroke-linejoin="round">{symbol}</g>')
+        parts.append(f'<g fill="none" stroke="#d1d1d6" stroke-width="1.5" stroke-linejoin="round">{symbol}</g>')
 
     control('Create','Create',check_at=(246,211))
     control('Options','Options',check_at=(667,211))
@@ -170,5 +170,5 @@ def blueprint_svg(held=(), seen=(), sticks=None, triggers=None, touches=None, la
     control('PS','PS',(455,417),'PS',(483,397))
     control('Mute','Mute',check_at=(493,474))
     leader('450,341 450,366','Mute',450,380)
-    static.append(text(450,529,_('Pressione os botões no controle físico'),13,'#9cbdcf'))
+    static.append(text(450,529,_('Pressione os botões no controle físico'),13,'#98989d'))
     return header+(''.join(static) if layer!='live' else '')+(''.join(parts) if layer!='static' else '')+'</svg>'

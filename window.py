@@ -26,7 +26,7 @@ from charge_view import BatteryPanel, attach_battery_panel
 from access_guard import AccessGuard
 from game_profiles import GameDetector, running_game, parse_profiles, effective_mode, installed_games
 from presentation import ControllerState, confirmed_mode, MODES, AccessSetup
-from ui import icon, Dashboard, ContentClamp, EffectsEditor, themed_dialog, label, button, style
+from ui import icon, Dashboard, EffectsEditor, themed_dialog, label, button, style
 from ui import AppearanceEditor
 from layout import fit_window, AdaptiveBox
 import artwork
@@ -107,7 +107,7 @@ class Window(Gtk.Window):
 
     def build_dashboard(self):
         self.dashboard = Dashboard(self)
-        self.add(ContentClamp(self.dashboard))
+        self.add(self.dashboard)
         self.cards, self.notice = self.dashboard.cards, self.dashboard.notice
         self.unlock, self.protect = self.dashboard.unlock, self.dashboard.protect
         ui_settings = core.settings()['ui']

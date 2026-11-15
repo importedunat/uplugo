@@ -77,7 +77,7 @@ class BatteryPanel(Gtk.Box):
         self.plot=BatteryPlot();self.pack_start(self.plot,False,False,0)
         self.pack_start(label(_('Leituras do controle · sem previsão de carga'),'muted','small',wrap=True),False,False,0)
         self.pack_start(Gtk.Separator(), False, False, 0)
-        self.pack_start(label(_('Neste período'), 'controller-name', wrap=True), False, False, 0)
+        self.pack_start(label(_('Neste período'), 'setting-title', wrap=True), False, False, 0)
         self.change = label('', wrap=True)
         self.interval = label('', 'muted', 'small', wrap=True)
         self.changes = label('', 'small', wrap=True)
